@@ -13,9 +13,9 @@ app.get('/', function(request, response) {
   response.render('pages/index');
 });
 
-app.get('/calculateMultiplies/:id', function(request, response) {
+app.get('/api/calculateMultiplies', function(request, response) {
   //response.render('pages/index');
-  response.json({"error": id})
+  response.json({"error": "message"})
 });
 
 app.listen(app.get('port'), function() {
