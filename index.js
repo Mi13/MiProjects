@@ -17,11 +17,21 @@ app.get('/', function(request, response) {
 });
 
 app.post('/api/calculateMultiplies', function(request, response) {
-  response.json({"number found": request.body.number})
+  response.json({"number found": calculateMultiplies(3,5,request.body.number)})
 });
 
 app.listen(app.get('port'), function() {
   console.log('Node app is running on port', app.get('port'));
 });
+
+function calculateMultiplies(first,second,limit) {
+	var sum = 0;
+	for(var i = 0 ; i < limit ; i++){
+		if (i%first === 0 || i%second === 0){
+			sum += i;
+		}
+	}
+	return sum;
+}
 
 
