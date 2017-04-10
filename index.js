@@ -1,5 +1,8 @@
 var express = require('express');
+var bodyParser = require('body-parser');
+
 var app = express();
+app.use(bodyParser.json({ type: 'application/json' }));
 
 app.set('port', (process.env.PORT || 5000));
 
@@ -13,9 +16,9 @@ app.get('/', function(request, response) {
   response.render('pages/index');
 });
 
-app.get('/api/calculateMultiplies', function(request, response) {
+app.post('/api/calculateMultiplies', function(request, response) {
   //response.render('pages/index');
-  response.json({"error": "message"})
+  response.json({"number found": request.body.number})
 });
 
 app.listen(app.get('port'), function() {
