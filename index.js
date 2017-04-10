@@ -17,7 +17,7 @@ app.get('/', function(request, response) {
 });
 
 app.post('/api/calculateMultiplies', function(request, response) {
-  response.json({"number found": calculateMultiplies(3,5,request.body.number)})
+  response.json({"sum": calculateMultiplies(3,5,request.body.number)})
 });
 
 app.listen(app.get('port'), function() {
