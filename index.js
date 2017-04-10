@@ -10,8 +10,12 @@ app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 
 app.get('/', function(request, response) {
+  response.render('pages/index');
+});
+
+app.get('/calculateMultiplies/:id', function(request, response) {
   //response.render('pages/index');
-  response.json({"error":"message"})
+  response.json({"error": id})
 });
 
 app.listen(app.get('port'), function() {
