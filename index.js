@@ -23,7 +23,10 @@ app.post('/calculateMultiplies', function(request, response) {
 
 	if ( isNaN(num) ) 
     {
-        response.json({"sum": "not a valid number"});
+        response.json({"error": "not a valid number"});
+    }
+    else if ( num < 3 ){
+ 		response.json({"error": "number should be >= 3"});
     }
     else
     {
