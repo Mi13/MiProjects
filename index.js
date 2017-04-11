@@ -19,14 +19,16 @@ app.get('/', function(request, response) {
 
 app.post('/calculateMultiplies', function(request, response) {
 
-	// if(!isNumeric(request.body.number))
- //    {
- //        response.json({"sum": "not a valid number"});
- //    }
- //    else
- //    {
-    	response.json({"sum": calculateMultiplies(3,5,request.body.number)});
-    // }
+	var num = request.body.number
+
+	if(NaN === parseInt(num))
+    {
+        response.json({"sum": "not a valid number"});
+    }
+    else
+    {
+    	response.json({"sum": calculateMultiplies(3, 5, num)});
+    }
 });
 
 
