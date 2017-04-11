@@ -19,9 +19,9 @@ app.get('/', function(request, response) {
 
 app.post('/calculateMultiplies', function(request, response) {
 
-	var num = request.body.number
+	var num = parseInt(request.body.number)
 
-	if(NaN === parseInt(num))
+	if(NaN === num)
     {
         response.json({"sum": "not a valid number"});
     }
