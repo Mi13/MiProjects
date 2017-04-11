@@ -17,14 +17,13 @@ app.get('/', function(request, response) {
   	response.render('pages/index');
 });
 
-app.post('/api/calculateMultiplies', function(request, response) {
+app.post('/calculateMultiplies', function(request, response) {
   	response.json({"sum": calculateMultiplies(3,5,request.body.number)});
 });
 
 
-app.get('/api/getValue', function(request, response) {
-	cache.put('foo', 'bar');
-  	response.json({"sum": cache.get('foo')});
+app.get('/getPrevResult', function(request, response) {
+  	response.json({"sum": cache.get('sum')});
 });
 
 
@@ -39,6 +38,7 @@ function calculateMultiplies(first,second,limit) {
 			sum += i;
 		}
 	}
+	cache.put('sum', sum);
 	return sum;
 }
 
