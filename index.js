@@ -1,5 +1,6 @@
 var express = require('express');
 var bodyParser = require('body-parser');
+var cache = require('memory-cache');
 
 var app = express();
 app.use(bodyParser.json({ type: 'application/json' }));
@@ -13,15 +14,22 @@ app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 
 app.get('/', function(request, response) {
-  response.render('pages/index');
+  	response.render('pages/index');
 });
 
 app.post('/api/calculateMultiplies', function(request, response) {
-  response.json({"sum": calculateMultiplies(3,5,request.body.number)})
+  	response.json({"sum": calculateMultiplies(3,5,request.body.number)});
 });
 
+
+app.get('/api/getValue', function(request, response) {
+	cache.put('foo', 'bar');
+  	response.json({"sum": cache.get('foo')});
+});
+
+
 app.listen(app.get('port'), function() {
-  console.log('Node app is running on port', app.get('port'));
+   	console.log('Node app is running on port', app.get('port'));
 });
 
 function calculateMultiplies(first,second,limit) {

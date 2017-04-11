@@ -12,7 +12,8 @@
   "dependencies": {
     "ejs": "2.4.1",
     "express": "4.13.3",
-    "body-parser": "1.17.1"
+    "body-parser": "1.17.1",
+    "memory-cache" : "0.1.6"
   },
   "repository": {
     "type": "git",
